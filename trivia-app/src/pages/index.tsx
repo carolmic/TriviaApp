@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import QuizCard from '@/components/QuizCard';
+import TsParticles from '@/components/TsParticles';
 import { Flex, Grid } from '@radix-ui/themes';
 import { useRouter } from 'next/router';
 
@@ -64,6 +65,8 @@ const quizzes = [
 export default function MyApp() {
   const router = useRouter();
   return (
+    <>
+    <TsParticles /> 
     <Flex direction="column" gap="2">
       <Header />
       <Grid columns="4" rows="repeat(2, 15rem)" width="50%">
@@ -72,5 +75,6 @@ export default function MyApp() {
         ))}
       </Grid>
     </Flex>
+    </>
   );
 }
