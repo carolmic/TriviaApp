@@ -28,14 +28,24 @@ export async function getServerSideProps() {
 
 export default function Quiz(quizData: QuizData) {
 	console.log(quizData, "quizData");
-	const [currentQuestion, setCurrentQuestion] = useState<Question>(quizData.quizData[0]);
+	const [questionIndex, setQuestionIndex] = useState<number>(0);
+	const [currentQuestion, setCurrentQuestion] = useState<Question>(
+		quizData.quizData[questionIndex]
+	);
 	const [answer, setAnswer] = useState<string>("");
+	const [score, setScore] = useState<number>(0);
 
 	useEffect(() => {
-    if (answer !== "") {
-      setCurrentQuestion(quizData.quizData[1]);
+		if (answer !== "") {
+      const nextIndex = questionIndex + 1;
+      if (nextIndex < quizData.quizData.length) {
+        setQuestionIndex(nextIndex);
+        setCurrentQuestion(quizData.quizData[nextIndex]);
+      } else {
+        console.log("Quiz finished!");
+      }
     }
-  }, [answer]);
+	}, [answer]);
 
 	return (
 		<Box>

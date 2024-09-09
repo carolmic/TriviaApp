@@ -33,7 +33,7 @@ export default function Question(props: QuestionProps) {
 	useEffect(() => {
 		const allAnswers = [...incorrectAnswers, correctAnswer];
 		setAnswers(shuffleArray(allAnswers));
-	}, []);
+	}, [props.title]);
 
 	return (
 		<>
