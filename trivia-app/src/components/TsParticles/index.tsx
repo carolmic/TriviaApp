@@ -40,6 +40,9 @@ export default function Cover() {
               }
             }
           },
+          background: {
+            color: "#FBF9F9"
+          },
           particles: {
             color: {
               value: "#D9D2FC"

@@ -8,57 +8,62 @@ const quizzes = [
   {
     category: 'General Knowledge',
     id: 9,
-    backgroundImage: '/general_knowledge.jpg'
+    backgroundImage: '/images/general_knowledge.jpg'
   }, 
   {
     category: 'Books',
     id: 10,
-    backgroundImage: '/books.jpg'
+    backgroundImage: '/images/books.jpg'
   }, 
   {
     category: 'Films',
     id: 11,
-    backgroundImage: '/film.jpg'
+    backgroundImage: '/images/film.jpg'
   }, 
   {
     category: 'Music',
     id: 12,
-    backgroundImage: '/music.jpg'
+    backgroundImage: '/images/music.jpg'
   }, 
   {
     category: 'Musicals & Theatres',
     id: 13,
-    backgroundImage: '/theatre.jpg'
+    backgroundImage: '/images/theatre.jpg'
   },
   {
     category: 'Television',
     id: 14,
-    backgroundImage: '/television.jpg'
+    backgroundImage: '/images/television.jpg'
   },
   {
     category: 'Video Games',
     id: 15,
-    backgroundImage: '/video_games.jpg'
+    backgroundImage: '/images/video_games.jpg'
   },
   {
     category: 'Board Games',
     id: 16,
-    backgroundImage: '/board_games.jpg'
+    backgroundImage: '/images/board_games.jpg'
   },
   {
     category: 'Science & Nature',
     id: 17,
-    backgroundImage: '/nature.jpg'
+    backgroundImage: '/images/nature.jpg'
   },
   {
     category: 'Computers',
     id: 18,
-    backgroundImage: '/computers.jpg'
+    backgroundImage: '/images/computers.jpg'
   },
   {
     category: 'Math',
     id: 19,
-    backgroundImage: '/mathematics.jpg'
+    backgroundImage: '/images/mathematics.jpg'
+  },
+  {
+    category: 'Mythology',
+    id: 20,
+    backgroundImage: '/images/mythology.jpg'
   }
 ];
 
@@ -67,7 +72,7 @@ export default function MyApp() {
   return (
     <>
     <TsParticles /> 
-    <Flex direction="column" gap="2">
+    <Flex direction="column" gap="8" className='items-center justify-center'>
       <Header />
       <Grid columns="4" rows="repeat(2, 15rem)" width="50%">
         {quizzes.map((quiz, index) => (
