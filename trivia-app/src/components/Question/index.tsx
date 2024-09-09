@@ -1,7 +1,6 @@
 import { Flex } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import QuizButton from "../Button";
-import TsParticles from "../TsParticles";
 
 interface QuestionProps {
 	title: string;
@@ -38,18 +37,15 @@ export default function Question(props: QuestionProps) {
 	}, [props.title]);
 
 	return (
-		<>
-			<TsParticles />
-			<Flex className="flex-col gap-4 z-10 w-full h-screen items-center !justify-center">
-				<h2>{props.title}</h2>
-				<ul className="flex flex-col w-1/2 gap-2">
-					{answers?.slice(0, 4).map((answer: any, index) => (
-						<QuizButton key={index} onClick={() => handleAnswer(answer)}>
-							{answer}
-						</QuizButton>
-					))}
-				</ul>
-			</Flex>
-		</>
+		<Flex className="flex-col gap-4 z-10 w-full items-center">
+			<h2>{props.title}</h2>
+			<ul className="flex flex-col w-1/2 gap-2">
+				{answers?.slice(0, 4).map((answer: any, index) => (
+					<QuizButton key={index} onClick={() => handleAnswer(answer)}>
+						{answer}
+					</QuizButton>
+				))}
+			</ul>
+		</Flex>
 	);
 }
