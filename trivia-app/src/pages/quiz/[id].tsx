@@ -16,6 +16,7 @@ type QuizData = {
 	quizData: Question[];
 };
 
+//eslint-disable-next-line
 export async function getServerSideProps(context: any) {
 	const { id } = context.query;
 	const res = await fetch(

@@ -8,6 +8,7 @@ export default function Cover() {
     await loadFull(engine);
   };
 
+  //eslint-disable-next-line
   const particlesLoaded = async (container: any): Promise<void> => {
     console.log(container);
   };

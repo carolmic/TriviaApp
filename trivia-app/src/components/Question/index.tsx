@@ -21,7 +21,7 @@ export default function Question(props: QuestionProps) {
 
 	const shuffleArray = (array: string[]) => {
 		for (let i = array.length - 1; i >= 0; i--) {
-			let j = Math.floor(Math.random() * (i + 1));
+			const j = Math.floor(Math.random() * (i + 1));
 			[array[i], array[j]] = [array[j], array[i]];
 		}
 		return array;
@@ -40,7 +40,7 @@ export default function Question(props: QuestionProps) {
 		<Flex className="flex-col gap-4 z-10 w-full items-center">
 			<h2>{props.title}</h2>
 			<ul className="flex flex-col w-1/2 gap-2">
-				{answers?.slice(0, 4).map((answer: any, index) => (
+				{answers?.slice(0, 4).map((answer: string, index) => (
 					<QuizButton key={index} onClick={() => handleAnswer(answer)}>
 						{answer}
 					</QuizButton>
