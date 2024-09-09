@@ -27,7 +27,6 @@ export async function getServerSideProps() {
 }
 
 export default function Quiz(quizData: QuizData) {
-	console.log(quizData, "quizData");
 	const [questionIndex, setQuestionIndex] = useState<number>(0);
 	const [currentQuestion, setCurrentQuestion] = useState<Question>(
 		quizData.quizData[questionIndex]
@@ -35,9 +34,12 @@ export default function Quiz(quizData: QuizData) {
 	const [answer, setAnswer] = useState<string>("");
 	const [score, setScore] = useState<number>(0);
 
-	useEffect(() => {
+	const handleAnswer = (answer: string) => {
 		if (answer !== "") {
       const nextIndex = questionIndex + 1;
+			if (answer === currentQuestion.correct_answer) {
+				setScore(score + 1);
+			}
       if (nextIndex < quizData.quizData.length) {
         setQuestionIndex(nextIndex);
         setCurrentQuestion(quizData.quizData[nextIndex]);
@@ -45,6 +47,10 @@ export default function Quiz(quizData: QuizData) {
         console.log("Quiz finished!");
       }
     }
+	};
+
+	useEffect(() => {
+		handleAnswer(answer);
 	}, [answer]);
 
 	return (
@@ -59,6 +65,7 @@ export default function Quiz(quizData: QuizData) {
 						answer={answer}
 						setAnswer={setAnswer}
 					/>
+					<p>Score: {score}</p>
 				</Flex>
 			</ul>
 		</Box>
