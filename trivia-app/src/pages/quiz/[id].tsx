@@ -1,5 +1,5 @@
 import Question from "@/components/Question";
-import { Box, Flex } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 
 type Question = {
@@ -37,17 +37,17 @@ export default function Quiz(quizData: QuizData) {
 
 	const handleAnswer = (answer: string) => {
 		if (answer !== "") {
-      const nextIndex = questionIndex + 1;
+			const nextIndex = questionIndex + 1;
 			if (answer === currentQuestion.correct_answer) {
 				setScore(score + 1);
 			}
-      if (nextIndex < quizData.quizData.length) {
-        setQuestionIndex(nextIndex);
-        setCurrentQuestion(quizData.quizData[nextIndex]);
-      } else {
-        console.log("Quiz finished!");
-      }
-    }
+			if (nextIndex < quizData.quizData.length) {
+				setQuestionIndex(nextIndex);
+				setCurrentQuestion(quizData.quizData[nextIndex]);
+			} else {
+				console.log("Quiz finished!");
+			}
+		}
 	};
 
 	useEffect(() => {
@@ -55,20 +55,14 @@ export default function Quiz(quizData: QuizData) {
 	}, [answer]);
 
 	return (
-		<Box>
-			<h1>Quiz</h1>
-			<ul>
-				<Flex className="flex-col">
-					<Question
-						title={currentQuestion!.question}
-						incorrect_answers={currentQuestion!.incorrect_answers}
-						correct_answer={currentQuestion!.correct_answer}
-						answer={answer}
-						setAnswer={setAnswer}
-					/>
-					<p>Score: {score}</p>
-				</Flex>
-			</ul>
-		</Box>
+		<Flex className="flex-col w-full h-screen items-center justify-center">
+			<Question
+				title={currentQuestion!.question}
+				incorrect_answers={currentQuestion!.incorrect_answers}
+				correct_answer={currentQuestion!.correct_answer}
+				answer={answer}
+				setAnswer={setAnswer}
+			/>
+		</Flex>
 	);
 }
