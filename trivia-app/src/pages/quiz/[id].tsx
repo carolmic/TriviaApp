@@ -34,6 +34,26 @@ export async function getServerSideProps(context: any) {
 		if (question.question.includes("&amp;")) {
 			question.question = question.question.replace(/&amp;/g, "&");
 		}
+		question.incorrect_answers.forEach((answer: string, index: number) => {
+			if (answer.includes("&quot;")) {
+				question.incorrect_answers[index] = answer.replace(/&quot;/g, '"');
+			}
+			if (answer.includes("&#039;")) {
+				question.incorrect_answers[index] = answer.replace(/&#039;/g, "'");
+			}
+			if (answer.includes("&amp;")) {
+				question.incorrect_answers[index] = answer.replace(/&amp;/g, "&");
+			}
+		});
+		if (question.correct_answer.includes("&quot;")) {
+			question.correct_answer = question.correct_answer.replace(/&quot;/g, '"');
+		}
+		if (question.correct_answer.includes("&#039;")) {
+			question.correct_answer = question.correct_answer.replace(/&#039;/g, "'");
+		}
+		if (question.correct_answer.includes("&amp;")) {
+			question.correct_answer = question.correct_answer.replace(/&amp;/g, "&");
+		}
 	});
 
 	return {
@@ -53,18 +73,30 @@ export default function Quiz(quizData: QuizData) {
 
 	const handleAnswer = (answer: string) => {
 		if (answer !== "") {
-			const nextIndex = questionIndex + 1;
 			if (answer === currentQuestion.correct_answer) {
 				setScore(score + 1);
 			}
-			if (nextIndex < quizData.quizData.length) {
-				setQuestionIndex(nextIndex);
-				setCurrentQuestion(quizData.quizData[nextIndex]);
-				setQuestionNumber(questionNumber + 1);
-			} else {
-				console.log("Quiz finished!");
-				setIsFinished(true);
-			}
+		}
+	};
+
+	const handleNextQuestion = () => {
+		const nextIndex = questionIndex + 1;
+		if (nextIndex < quizData.quizData.length) {
+			setQuestionIndex(nextIndex);
+			setCurrentQuestion(quizData.quizData[nextIndex]);
+			setQuestionNumber(questionNumber + 1);
+		} else {
+			console.log("Quiz finished!");
+			setIsFinished(true);
+		}
+	};
+
+	const handlePreviousQuestion = () => {
+		const prevIndex = questionIndex - 1;
+		if (prevIndex >= 0) {
+			setQuestionIndex(prevIndex);
+			setCurrentQuestion(quizData.quizData[prevIndex]);
+			setQuestionNumber(questionNumber - 1);
 		}
 	};
 
@@ -93,6 +125,8 @@ export default function Quiz(quizData: QuizData) {
 						correct_answer={currentQuestion!.correct_answer}
 						answer={answer}
 						setAnswer={setAnswer}
+						handleNextQuestion={handleNextQuestion}
+						handlePreviousQuestion={handlePreviousQuestion}
 					/>
 				</>
 			)}

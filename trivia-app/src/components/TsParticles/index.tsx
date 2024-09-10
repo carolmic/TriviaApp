@@ -4,7 +4,6 @@ import { Engine } from "tsparticles-engine";
 
 export default function Cover() {
   const particlesInit = async (engine: Engine) => {
-    console.log("particlesInit", engine);
     await loadFull(engine);
   };
 
