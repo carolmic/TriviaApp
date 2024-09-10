@@ -64,6 +64,46 @@ const quizzes = [
     category: 'Mythology',
     id: 20,
     backgroundImage: '/images/mythology.jpg'
+  },
+  {
+    category: 'Sports',
+    id: 21,
+    backgroundImage: '/images/sports.jpg'
+  }, 
+  {
+    category: 'Geography',
+    id: 22,
+    backgroundImage: '/images/geography.jpg'
+  },
+  {
+    category: 'History',
+    id: 23,
+    backgroundImage: '/images/history.jpg'
+  },
+  {
+    category: 'Politics', 
+    id: 24,
+    backgroundImage: '/images/politics.jpg'
+  },
+  {
+    category: 'Art',
+    id: 25,
+    backgroundImage: '/images/art.jpg'
+  },
+  {
+    category: 'Celebrities',
+    id: 26,
+    backgroundImage: '/images/celebrities.jpg'
+  },
+  {
+    category: 'Animals',
+    id: 27,
+    backgroundImage: '/images/animals.jpg'
+  },
+  {
+    category: 'Vehicles',
+    id: 28,
+    backgroundImage: '/images/vehicles.jpg'
   }
 ];
 
@@ -74,7 +114,7 @@ export default function MyApp() {
     <TsParticles /> 
     <Flex direction="column" gap="8" className='items-center justify-center'>
       <Header />
-      <Grid columns="4" rows="repeat(2, 15rem)" width="50%">
+      <Grid columns="4" rows="repeat(4, 15rem)" width="50%">
         {quizzes.map((quiz, index) => (
           <QuizCard key={index} category={quiz.category} backgroundImage={quiz.backgroundImage} onClick={() => router.push(`/quiz/${quiz.id}`)}/>
         ))}

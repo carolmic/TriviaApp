@@ -33,7 +33,6 @@ export default function Question(props: QuestionProps) {
 	const handleAnswer = (answer: string) => {
 		setSelectedAnswer(answer);
 		props.setAnswer(answer);
-
 	};
 
 	useEffect(() => {

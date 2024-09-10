@@ -105,7 +105,7 @@ export default function Quiz(quizData: QuizData) {
 	}, [answer]);
 
 	return (
-		<Flex className="flex-col w-full h-screen items-center !justify-center gap-4">
+		<Flex className="flex-col w-full h-screen items-center !justify-center gap-4 overflow-hidden">
 			<TsParticles />
 			{isFinished ? (
 				<>
