@@ -9,7 +9,6 @@ interface QuestionProps {
 	answer: string;
 	setAnswer: (answer: string) => void;
 	handleNextQuestion: () => void;
-	handlePreviousQuestion: () => void;
 }
 
 export default function Question(props: QuestionProps) {
@@ -61,7 +60,6 @@ export default function Question(props: QuestionProps) {
 				))}
 			</ul>
 			<Flex className="w-1/2 !justify-center gap-4">
-				<Button className="!w-1/4 !bg-violet-400 !cursor-pointer" onClick={props.handlePreviousQuestion}>Previous Question</Button>
 				<Button className="!w-1/4 !bg-violet-400 !cursor-pointer" onClick={props.handleNextQuestion}>
 					Next Question
 				</Button>

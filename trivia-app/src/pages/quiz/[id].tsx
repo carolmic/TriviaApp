@@ -93,15 +93,6 @@ export default function Quiz(quizData: QuizData) {
 		}
 	};
 
-	const handlePreviousQuestion = () => {
-		const prevIndex = questionIndex - 1;
-		if (prevIndex >= 0) {
-			setQuestionIndex(prevIndex);
-			setCurrentQuestion(quizData.quizData[prevIndex]);
-			setQuestionNumber(questionNumber - 1);
-		}
-	};
-
 	useEffect(() => {
 		handleAnswer(answer);
 	}, [answer]);
@@ -129,7 +120,6 @@ export default function Quiz(quizData: QuizData) {
 						answer={answer}
 						setAnswer={setAnswer}
 						handleNextQuestion={handleNextQuestion}
-						handlePreviousQuestion={handlePreviousQuestion}
 					/>
 				</>
 			)}
