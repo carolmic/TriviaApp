@@ -21,7 +21,7 @@ type QuizData = {
 export async function getServerSideProps(context: any) {
 	const { id } = context.query;
 	const res = await fetch(
-		`https://opentdb.com/api.php?amount=10&category=${id}&type=multiple`
+		`https://opentdb.com/api.php?amount=10&category=${id}&difficulty=medium&type=multiple`
 	);
 	const data = await res.json();
 
