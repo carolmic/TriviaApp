@@ -51,7 +51,7 @@ export default function Question(props: QuestionProps) {
 
 	return (
 		<Flex className="flex-col gap-8 z-10 w-full items-center">
-			<h2>{props.title}</h2>
+			<h2 className="text-center">{props.title}</h2>
 			<ul className="flex flex-col w-1/2 gap-2">
 				{answers?.slice(0, 4).map((answer: string, index) => (
 					<QuizButton key={index} onClick={() => handleAnswer(answer)} className={`${getButtonBgColor(answer)}`}>
@@ -60,7 +60,7 @@ export default function Question(props: QuestionProps) {
 				))}
 			</ul>
 			<Flex className="w-1/2 !justify-center gap-4">
-				<Button className="!w-1/4 !bg-violet-400 !cursor-pointer" onClick={props.handleNextQuestion}>
+				<Button className="!w-auto !bg-violet-400 !cursor-pointer" onClick={props.handleNextQuestion}>
 					Next Question
 				</Button>
 			</Flex>

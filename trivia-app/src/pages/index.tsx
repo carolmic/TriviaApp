@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import QuizCard from '@/components/QuizCard';
 import TsParticles from '@/components/TsParticles';
-import { Flex, Grid } from '@radix-ui/themes';
+import { Flex } from '@radix-ui/themes';
 import { useRouter } from 'next/router';
 
 const quizzes = [
@@ -114,11 +114,11 @@ export default function MyApp() {
     <TsParticles /> 
     <Flex direction="column" gap="8" className='items-center justify-center'>
       <Header />
-      <Grid columns="4" rows="repeat(4, 15rem)" width="50%">
+      <div className='w-auto grid gap-4 min-[820px]:grid-cols-4 min-[390px]:grid-cols-2 grid-rows-4'>
         {quizzes.map((quiz, index) => (
           <QuizCard key={index} category={quiz.category} backgroundImage={quiz.backgroundImage} onClick={() => router.push(`/quiz/${quiz.id}`)}/>
         ))}
-      </Grid>
+      </div>
     </Flex>
     </>
   );

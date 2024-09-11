@@ -39,7 +39,7 @@ export default function QuizCard(props: QuizCardProps) {
 	return (
 		<Box
 			ref={cardRef}
-			className="w-44 h-44 relative z-0 bg-cover bg-center rounded-lg shadow-lg cursor-pointer"
+			className="w-44 h-44 relative z-0 bg-cover bg-center rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-in-out"
 			style={{
 				backgroundImage: isInView ? `url(${props.backgroundImage})` : "none", // Only load the background image when it's in view
 			}}

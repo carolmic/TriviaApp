@@ -176,7 +176,7 @@ export default function Quiz(quizData: QuizData) {
 						Your score is {score} out of {quizData.quizData.length}
 					</h2>
 					<Button
-						className="!z-10 !w-1/4 !bg-violet-400 !cursor-pointer"
+						className="!z-10 !w-auto !bg-violet-400 !cursor-pointer"
 						onClick={() => router.push("/")}
 					>
 						Back to Home
