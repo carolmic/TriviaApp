@@ -38,6 +38,9 @@ export async function getServerSideProps(context: any) {
 		if (question.question.includes("&ldquo;")) {
 			question.question = question.question.replace(/&ldquo;/g, '"');
 		}
+		if (question.question.includes("&rdquo;")) {
+			question.question = question.question.replace(/&rdquo;/g, '"');
+		}
 		question.incorrect_answers.forEach((answer: string, index: number) => {
 			if (answer.includes("&quot;")) {
 				question.incorrect_answers[index] = answer.replace(/&quot;/g, '"');
@@ -65,6 +68,15 @@ export async function getServerSideProps(context: any) {
 			}
 			if (answer.includes("&quot;")) {
 				question.incorrect_answers[index] = answer.replace(/&quot;/g, '"');
+			}
+			if (answer.includes("&auml;")) {
+				question.incorrect_answers[index] = answer.replace(/&auml;/g, "ä");
+			}
+			if (answer.includes("&aring;")) {
+				question.incorrect_answers[index] = answer.replace(/&aring;/g, "å");
+			}
+			if (answer.includes("&uuml;")) {
+				question.incorrect_answers[index] = answer.replace(/&uuml;/g, "ü");
 			}
 		});
 		if (question.correct_answer.includes("&quot;")) {
@@ -94,6 +106,15 @@ export async function getServerSideProps(context: any) {
 		if (question.correct_answer.includes("&quot;")) {
 			question.correct_answer = question.correct_answer.replace(/&quot;/g, '"');
 		}
+		if (question.correct_answer.includes("&auml;")) {
+			question.correct_answer = question.correct_answer.replace(/&auml;/g, "ä");
+		}
+		if (question.correct_answer.includes("&aring;")) {
+			question.correct_answer = question.correct_answer.replace(/&aring;/g, "å");
+		}
+		if (question.correct_answer.includes("&uuml;")) {
+			question.correct_answer = question.correct_answer.replace(/&uuml;/g, "ü");
+		}
 	});
 
 	return {
@@ -102,7 +123,6 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function Quiz(quizData: QuizData) {
-	console.log(quizData);
 	const [questionIndex, setQuestionIndex] = useState<number>(0);
 	const [currentQuestion, setCurrentQuestion] = useState<Question>(
 		quizData.quizData[questionIndex]
