@@ -1,6 +1,7 @@
 import Question from "@/components/Question";
 import TsParticles from "@/components/TsParticles";
-import { Flex } from "@radix-ui/themes";
+import { Button, Flex } from "@radix-ui/themes";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 type Question = {
@@ -70,6 +71,7 @@ export default function Quiz(quizData: QuizData) {
 	const [score, setScore] = useState<number>(0);
 	const [questionNumber, setQuestionNumber] = useState<number>(1);
 	const [isFinished, setIsFinished] = useState<boolean>(false);
+	const router = useRouter();
 
 	const handleAnswer = (answer: string) => {
 		if (answer !== "") {
@@ -113,6 +115,7 @@ export default function Quiz(quizData: QuizData) {
 					<h2 className="font-bold z-10 text-gray-600 text-md">
 						Your score is {score} out of {quizData.quizData.length}
 					</h2>
+					<Button className="!z-10 !w-1/4 !bg-violet-400 !cursor-pointer" onClick={() => router.push('/')}>Back to Home</Button>
 				</>
 			) : (
 				<>
