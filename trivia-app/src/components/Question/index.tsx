@@ -42,28 +42,34 @@ export default function Question(props: QuestionProps) {
 
 	const getButtonBgColor = (answer: string) => {
 		if (!selectedAnswer) return "!bg-white hover:!bg-slate-50"; // Default button color before selection
-		if (answer === correctAnswer && selectedAnswer === answer) return "!bg-green-300 hover:!bg-green-400"; // Correct answer
-		if (answer !== correctAnswer && selectedAnswer === answer) return "!bg-red-300 hover:!bg-red-400"; // Incorrect answer
+		if (answer === correctAnswer && selectedAnswer === answer)
+			return "!bg-green-300 hover:!bg-green-400"; // Correct answer
+		if (answer !== correctAnswer && selectedAnswer === answer)
+			return "!bg-red-300 hover:!bg-red-400"; // Incorrect answer
 		if (answer === correctAnswer) return "!bg-green-300 hover:!bg-green-400"; // Show correct answer if already selected
 		return "!bg-white hover:!bg-slate-50"; // Unselected answers
 	};
 
-
 	return (
-		<Flex className="flex-col gap-8 z-10 w-full items-center">
+		<Flex className="flex-col gap-12 z-10 w-full items-center">
 			<h2 className="text-center">{props.title}</h2>
 			<ul className="flex flex-col w-1/2 gap-2">
 				{answers?.slice(0, 4).map((answer: string, index) => (
-					<QuizButton key={index} onClick={() => handleAnswer(answer)} className={`${getButtonBgColor(answer)}`}>
+					<QuizButton
+						key={index}
+						onClick={() => handleAnswer(answer)}
+						className={`${getButtonBgColor(answer)}`}
+					>
 						{answer}
 					</QuizButton>
 				))}
 			</ul>
-			<Flex className="w-1/2 !justify-center gap-4">
-				<Button className="!w-auto !bg-violet-400 !cursor-pointer" onClick={props.handleNextQuestion}>
-					Next Question
-				</Button>
-			</Flex>
+			<Button
+				className="!w-auto !bg-violet-400 !cursor-pointer"
+				onClick={props.handleNextQuestion}
+			>
+				Next Question
+			</Button>
 		</Flex>
 	);
 }
