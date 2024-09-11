@@ -35,6 +35,9 @@ export async function getServerSideProps(context: any) {
 		if (question.question.includes("&amp;")) {
 			question.question = question.question.replace(/&amp;/g, "&");
 		}
+		if (question.question.includes("&ldquo;")) {
+			question.question = question.question.replace(/&ldquo;/g, '"');
+		}
 		question.incorrect_answers.forEach((answer: string, index: number) => {
 			if (answer.includes("&quot;")) {
 				question.incorrect_answers[index] = answer.replace(/&quot;/g, '"');
@@ -44,6 +47,24 @@ export async function getServerSideProps(context: any) {
 			}
 			if (answer.includes("&amp;")) {
 				question.incorrect_answers[index] = answer.replace(/&amp;/g, "&");
+			}
+			if (answer.includes("&aacute;")) {
+				question.incorrect_answers[index] = answer.replace(/&aacute;/g, "á");
+			}
+			if (answer.includes("&ntilde;")) {
+				question.incorrect_answers[index] = answer.replace(/&ntilde;/g, "ñ");
+			}
+			if (answer.includes("&eacute;")) {
+				question.incorrect_answers[index] = answer.replace(/&eacute;/g, "é");
+			}
+			if (answer.includes("&ouml;")) {
+				question.incorrect_answers[index] = answer.replace(/&ouml;/g, "ö");
+			}
+			if (answer.includes("&ldquo;")) {
+				question.incorrect_answers[index] = answer.replace(/&ldquo;/g, '"');
+			}
+			if (answer.includes("&quot;")) {
+				question.incorrect_answers[index] = answer.replace(/&quot;/g, '"');
 			}
 		});
 		if (question.correct_answer.includes("&quot;")) {
@@ -55,6 +76,24 @@ export async function getServerSideProps(context: any) {
 		if (question.correct_answer.includes("&amp;")) {
 			question.correct_answer = question.correct_answer.replace(/&amp;/g, "&");
 		}
+		if (question.correct_answer.includes("&aacute;")) {
+			question.correct_answer = question.correct_answer.replace(/&aacute;/g, "á");
+		}
+		if (question.correct_answer.includes("&ntilde;")) {
+			question.correct_answer = question.correct_answer.replace(/&ntilde;/g, "ñ");
+		}
+		if (question.correct_answer.includes("&eacute;")) {
+			question.correct_answer = question.correct_answer.replace(/&eacute;/g, "é");
+		}
+		if (question.correct_answer.includes("&ouml;")) {
+			question.correct_answer = question.correct_answer.replace(/&ouml;/g, "ö");
+		}
+		if (question.correct_answer.includes("&ldquo;")) {
+			question.correct_answer = question.correct_answer.replace(/&ldquo;/g, '"');
+		}
+		if (question.correct_answer.includes("&quot;")) {
+			question.correct_answer = question.correct_answer.replace(/&quot;/g, '"');
+		}
 	});
 
 	return {
@@ -63,6 +102,7 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function Quiz(quizData: QuizData) {
+	console.log(quizData);
 	const [questionIndex, setQuestionIndex] = useState<number>(0);
 	const [currentQuestion, setCurrentQuestion] = useState<Question>(
 		quizData.quizData[questionIndex]
@@ -106,7 +146,12 @@ export default function Quiz(quizData: QuizData) {
 					<h2 className="font-bold z-10 text-gray-600 text-md">
 						Your score is {score} out of {quizData.quizData.length}
 					</h2>
-					<Button className="!z-10 !w-1/4 !bg-violet-400 !cursor-pointer" onClick={() => router.push('/')}>Back to Home</Button>
+					<Button
+						className="!z-10 !w-1/4 !bg-violet-400 !cursor-pointer"
+						onClick={() => router.push("/")}
+					>
+						Back to Home
+					</Button>
 				</>
 			) : (
 				<>
