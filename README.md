@@ -1,4 +1,4 @@
-# TriviaApp
+# Trivia App
 This project is an interactive quiz application built using modern web development technologies. The app fetches trivia questions from an external API and displays them with a shuffled list of possible answers for each question. The app is designed to provide an engaging and responsive experience for users.
 
 ## Demo
