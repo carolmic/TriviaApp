@@ -41,6 +41,9 @@ export async function getServerSideProps(context: any) {
 		if (question.question.includes("&rdquo;")) {
 			question.question = question.question.replace(/&rdquo;/g, '"');
 		}
+		if (question.question.includes("&sup2;")) {
+			question.question = question.question.replace(/&sup2;/g, "²");
+		}
 		question.incorrect_answers.forEach((answer: string, index: number) => {
 			if (answer.includes("&quot;")) {
 				question.incorrect_answers[index] = answer.replace(/&quot;/g, '"');
@@ -78,6 +81,9 @@ export async function getServerSideProps(context: any) {
 			if (answer.includes("&uuml;")) {
 				question.incorrect_answers[index] = answer.replace(/&uuml;/g, "ü");
 			}
+			if (answer.includes("&sup2;")) {
+				question.incorrect_answers[index] = answer.replace(/&sup2;/g, "²");
+			}
 		});
 		if (question.correct_answer.includes("&quot;")) {
 			question.correct_answer = question.correct_answer.replace(/&quot;/g, '"');
@@ -114,6 +120,9 @@ export async function getServerSideProps(context: any) {
 		}
 		if (question.correct_answer.includes("&uuml;")) {
 			question.correct_answer = question.correct_answer.replace(/&uuml;/g, "ü");
+		}
+		if (question.correct_answer.includes("&sup2;")) {
+			question.correct_answer = question.correct_answer.replace(/&sup2;/g, "²");
 		}
 	});
 
